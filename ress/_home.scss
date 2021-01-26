@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+//primary
+$desatu_red : hsl(0, 36%, 70%);
+$desatu_red_opa : rgba(206, 151, 151, 0.699);
+$soft_red : hsl(0, 93%, 68%);
+
+// neutral
+$dark_grey_red: hsl(0, 6%, 24%);
+
+// gradient
+$grad_1 : Linear, 135deg, from hsl(0, 0%, 100%), to hsl(0, 100%, 98%);
+$grad_2 : linear-gradient(135deg,  hsl(0, 80%, 86%),  hsl(0, 74%, 74%));
+
+html {
+    box-sizing: border-box;
+}
+*, *::before,::after{
+    box-sizing: inherit;
+    font-family: 'Josefin Sans', sans-serif;
+    line-height: 1.3;
+    font-size: 100%;
+    margin:0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    font-size: 16px;
+}
+// Grid Setup
+.header { grid-area: header; }
+.img {  grid-area: img; }
+.content {  grid-area: isi; }
+
+.grid-container{
+    display: grid;
+    grid-template-areas: 
+    'header'
+    'img'
+    'isi';
+    background: linear-gradient(135deg,hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+}
+
+// .grid-container > div {
+//     text-align: center;
+//     padding: 20px 0;
+// }
+
+// style
+.header {
+    height: 5.3125em;
+}
+
+.header > img {
+    height: 24px;
+    margin: 30px auto 30px 30px;
+}
+
+.img {
+    height: 15.625em;
+}
+.content {
+    text-align: center;
+    height: 29.0625em;
+
+}
+.context {
+    margin: 50px 20px auto 20px;
+}
+
+.heading > h1 {
+    color: $desatu_red;
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 12px;
+    line-height: 1;
+}
+.heading > h1:nth-child(2) {
+    font-weight: 600;
+    color: $dark_grey_red;
+}
+.context > p {
+    color: $desatu_red;
+    line-height: 1.6;
+    margin-top: 30px;
+}
+
+// form input btn
+.form {
+    position: relative;
+    margin-top: 35px;
+
+
+    input {
+        width: 100%;
+        padding: 15px 25px;
+        border: $desatu_red 1px solid;
+        border-radius: 30px;
+        background: transparent;
+        outline-style: none;
+    }
+
+    ::placeholder {  
+        color: $desatu_red_opa;
+    }
+    button {
+        position: absolute;
+        width: 65px;
+        border: none;
+        border-radius: 30px;
+        background: $grad_2;
+        padding: 15px 20px;
+        right: 0;
+        outline: none;
+        cursor: pointer;
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+    }
+
+}
+
+
+// desktop seetup
+.header{
+    @include breakpoint-up(large){
+        .header { grid-area: header; }
+    }
+}
+
+.grid-container {
+    @include breakpoint-up(large) {
+        height: 100vh;
+        grid-template: 
+        "header img"
+        "isi img"
+        "isi img";
+        background-image: url(/images/bg-pattern-desktop.svg);
+
+    }
+}
+
+.content{
+    @include breakpoint-up(large) {
+        display: flex;
+        align-items: center;
+    }
+}
+
+//mobile context
+ .context {
+    @include breakpoint-up(large) {
+        text-align: left;
+        margin-left: 165px;
+        margin-right: 217px;
+    }
+
+ }
+
+ .header > img {
+     @include breakpoint-up(large) {
+         margin-left: 165px;
+     }
+ }
+.heading > h1 {
+    @include breakpoint-up(large) {
+        line-height: 1.3;
+    }
+}
+
+
+
+
+
+
+
+
+
+.hide-desktop {
+    @include breakpoint-up(medium) {
+        display: none;
+    }
+}
+.hide-mobile {
+    @include breakpoint-down(medium) {
+        display: none;
+    }
+}
+
+
+
+
+
+// .attribution {
+//   font-size: 11px;
+//   text-align: center;
+// }
+
+// .attribution a {
+//   color: hsl(228, 45%, 44%);
+// }
