@@ -43,11 +43,6 @@ body {
     background: linear-gradient(135deg,hsl(0, 0%, 100%), hsl(0, 100%, 98%));
 }
 
-// .grid-container > div {
-//     text-align: center;
-//     padding: 20px 0;
-// }
-
 // style
 .header {
     height: 5.3125em;
@@ -91,18 +86,48 @@ body {
 .form {
     position: relative;
     margin-top: 35px;
+    margin-bottom: 12px;
 
 
-    input {
+    input{
         width: 100%;
         padding: 15px 25px;
         border: $desatu_red 1px solid;
         border-radius: 30px;
         background: transparent;
-        outline-style: none;
+        outline-style: none;  
+    }
+    input:focus {
+        border: $soft_red 1px solid;
+    }
+    
+
+    .errs {
+        opacity: 0;
+        position: absolute;
+        right: 65px;
+        margin: 14px;
+        top:0;
     }
 
-    ::placeholder {  
+    .errs.active {
+        animation: trans .1s ease-in;
+    }
+
+    @keyframes trans {
+        0%{
+            transform: translateX(0);
+        }
+        50%{
+            transform: translateX(-3px);
+        }
+        100% {
+            transform: translateX(3px);
+        }
+
+    }
+    ::placeholder {
+        margin: 0;
         color: $desatu_red_opa;
     }
     button {
@@ -113,6 +138,7 @@ body {
         background: $grad_2;
         padding: 15px 20px;
         right: 0;
+        top:0;
         outline: none;
         cursor: pointer;
         img {
@@ -123,10 +149,20 @@ body {
         }
 
     }
+    button:hover {
+        -webkit-box-shadow: -1px 6px 24px -3px rgba(249,98,98,0.78); 
+        box-shadow: -1px 6px 24px -3px rgba(249,98,98,0.78);
+    }
+    button:active {
+        transform: translateX(5px);
+    }
 
 }
 
 
+.validate{
+    color: $soft_red;
+}
 // desktop seetup
 .header{
     @include breakpoint-up(large){
@@ -175,26 +211,21 @@ body {
 }
 
 
-
-
-
-
-
-
-
+.validate {
+    @include breakpoint-up(large){
+        margin-left: 25px;
+    }
+}
 .hide-desktop {
-    @include breakpoint-up(medium) {
+    @include breakpoint-up(large) {
         display: none;
     }
 }
 .hide-mobile {
-    @include breakpoint-down(medium) {
+    @include breakpoint-down(large) {
         display: none;
     }
 }
-
-
-
 
 
 // .attribution {
