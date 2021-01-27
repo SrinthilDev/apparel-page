@@ -17,4 +17,3 @@ function myFunction() {
     }
     document.getElementById("warn").innerHTML = text;
 }
-
